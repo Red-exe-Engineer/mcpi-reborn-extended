@@ -158,7 +158,9 @@ void screenshot_take(char *home) {
     }
 
     // Post Chat Message
-    misc_append_to_chat_queue(file);
+    std::string message = file.substr(1);
+    message = "~" + message.substr(message.find('/', message.find('/') + 1));
+    misc_append_to_chat_queue(message);
 
     // Free
     free(file);
